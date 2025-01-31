@@ -1,0 +1,11 @@
+## Interface: 110007
+## Version: 1.0.0
+## Title: Ru's Addon Test Environment
+## Notes: Development Environment for testing and working on general World of Warcraft addon functionality.
+## Author: ru_the_dev
+
+LibRu/Load.xml
+
+RuTestEnvironment.lua
+BackdropTemplates/BackdropTemplates.lua
+CollapsiblePanelTest/CollapsiblePanelTest.lua

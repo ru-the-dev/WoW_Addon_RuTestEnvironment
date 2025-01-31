@@ -1,0 +1,10 @@
++-------------------------------+---------------------------------------+--------------------------------------------------+
+| Element                       | Convention                            | Example                                          |
++-------------------------------+---------------------------------------+--------------------------------------------------+
+| Local Variables               | lowerCamelCase                        | playerHealth, isInCombat                         |
+| Addon Variables               | Part of addon table, lowerCamelCase   | RTE.myAddonVariable                              |
+| Wow API Objects               | prefixed by object type               | f_frame, fs_fontString, btn_button               |
+| Functions                     | PascalCase                            | RTE.GetAddonSettings()                           |
+| Constants                     | ALL_CAPS                              | MAX_PLAYERS, DEFAULT_FONT                        |
+| File Names                    | PascalCase                            | MyAddon.lua                                      |
++-------------------------------+---------------------------------------+--------------------------------------------------+
