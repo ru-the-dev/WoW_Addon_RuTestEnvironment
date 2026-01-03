@@ -6,12 +6,8 @@
 
 ## Dependencies: Blizzard_Collections
 
-LibManager/Load.xml
 LibRu/Load.xml
 
 RuTestEnvironment.lua
 DebugPanel.lua
-BackdropTemplates/BackdropTemplates.lua
-## CollapsiblePanelTest/CollapsiblePanelTest.lua
-TransmogResize/TransmogResize.lua
-TransmogResize/CollectionFrame.lua
+## BackdropTemplates/BackdropTemplates.lua
