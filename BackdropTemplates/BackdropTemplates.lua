@@ -1,3 +1,9 @@
+local LibRu = _G["LibRu"];
+
+if not LibRu then
+    error("LibRu is required to initialize BackdropTemplates. Please ensure LibRu is loaded before BackdropTemplates.lua")
+end
+
 local backdropTemplates = {
     "BACKDROP_ACHIEVEMENTS_0_64",
     "BACKDROP_ARENA_32_32",
@@ -21,7 +27,7 @@ local activeBackdrop = nil;
 
 local function setActiveBackdrop(newBackdrop)
     if newBackdrop == activeBackdrop then
-       return; 
+        return;
     end
 
     -- update backdrop
@@ -88,7 +94,6 @@ function f_main.f_backdropSelectMenu:LoadMenuItems()
         info.func = f_main.f_backdropSelectMenu.OnValueSelected;
         UIDropDownMenu_AddButton(info);
     end;
-
 end
 
 UIDropDownMenu_Initialize(f_main.f_backdropSelectMenu, f_main.f_backdropSelectMenu.LoadMenuItems);
@@ -97,11 +102,11 @@ UIDropDownMenu_SetWidth(f_main.f_backdropSelectMenu, 300);
 
 -- close button
 f_main.btn_close = CreateFrame("Button", nil, f_main, "UIPanelCloseButton");
-f_main.btn_close:SetSize(20,20);
+f_main.btn_close:SetSize(20, 20);
 f_main.btn_close:SetPoint("TOPRIGHT")
 f_main.btn_close:SetScript("OnClick", function()
     f_main:Hide();
-end) 
+end)
 
 -- resize button
 
@@ -109,4 +114,3 @@ f_main.btn_resize = LibRu.CreateResizeButton(f_main, f_main);
 
 -- call backdrop changed once when ready setting everything up
 setActiveBackdrop(backdropTemplates[math.random(1, #backdropTemplates)]);
-

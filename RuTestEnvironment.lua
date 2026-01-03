@@ -1,3 +1,10 @@
+---@class LibRu : Library
+local LibRu = _G["LibRu"];
+
+if not LibRu then
+    error("LibRu is required for this addon, please make sure the files are present or reinstall the addon.")
+end
+
 -- Initialize global namespace/table
 RTE = RTE or CreateFrame("Frame");
 RTE.addonPath = "Interface\\AddOns\\RuTestEnvironment"
@@ -24,15 +31,21 @@ local function PookieTestEnvironmentSlashcommandHandler(msg)
     if command == "help" then
         print("Available Commands:")
         print("/RTE help - Show this help message.")
+        print("/RTE debug_panel - Open a debug panel with commonly used debug features.")
         print("/RTE backdrop_templates - Open the backdrop templates frame.")
         print("/RTE collapsible_panels - Open the collapsible panels frame.")
         print("/RTE set_tad_width <width> - Set width of TableAttributeDisplay.")
-    
-    elseif command == "backdrop_templates" then
-        if RTE.f_backdroRTEmplates then
-            RTE.f_backdroRTEmplates:Show()
+    elseif command == "debug_panel" then
+        if RTE.DebugPanel then
+            RTE.DebugPanel:Show()
         else
-            print("Could not find RTE.f_backdroRTEmplates")
+            print("Could not find RTE.DebugPanel")
+        end
+    elseif command == "backdrop_templates" then
+        if RTE.f_backdropTemplates then
+            RTE.f_backdropTemplates:Show()
+        else
+            print("Could not find RTE.f_backdropTemplates")
         end
 
     elseif command == "collapsible_panels" then
@@ -46,7 +59,7 @@ local function PookieTestEnvironmentSlashcommandHandler(msg)
         local width = tonumber(args[2])
         if width then
             print("Setting TableAttributeDisplay width to:", width)
-            LibRu.SetTableAttributeDisplayWidth(width)
+            LibRu.Debug.SetTableAttributeDisplayWidth(width)
         else
             print("Usage: /RTE set_table_attribute_display_width <number>")
         end
