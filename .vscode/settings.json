@@ -32,7 +32,8 @@
         "FrameStackTooltip",
         "ChatEdit_SendText",
         "WardrobeItemsCollectionMixin",
-        "WardrobeItemsModelMixin"
+        "WardrobeItemsModelMixin",
+        "ReloadUI"
     ],
     "Lua.type.weakUnionCheck": true
 }

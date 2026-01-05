@@ -26,7 +26,7 @@ end)
 
 
 -- add resize button
-LibRu.CreateResizeButton(debugFrame, debugFrame, 16);
+debugFrame.ResizeButton = LibRu.Frames.ResizeButton.New(debugFrame, debugFrame, 16)
 
 -- close button
 debugFrame.CloseButton = CreateFrame("Button", nil, debugFrame, "UIPanelCloseButton");
@@ -69,6 +69,7 @@ debugFrame.FrameStackToggle:SetScript("OnClick", function(self)
 end)
 
 
+
 -- add table attribute display width setter
 debugFrame.TADWidthLabel = debugFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal");
 debugFrame.TADWidthLabel:SetPoint("TOPLEFT", debugFrame, "TOPLEFT", 25, -110);
@@ -88,5 +89,35 @@ debugFrame.TADWidthInput:SetScript("OnEnterPressed", function(self)
     end
     self:ClearFocus();
 end);
+
+-- add table attribute display height setter
+debugFrame.TADHeightLabel = debugFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+debugFrame.TADHeightLabel:SetPoint("TOPLEFT", debugFrame.TADWidthInput, "BOTTOMLEFT", 0, -10);
+debugFrame.TADHeightLabel:SetText("Set TableAttributeDisplay Height:");
+debugFrame.TADHeightInput = CreateFrame("EditBox", "RTE Debug Frame TAD Height Input", debugFrame, "InputBoxTemplate");
+debugFrame.TADHeightInput:SetSize(100, 30);
+debugFrame.TADHeightInput:SetPoint("TOPLEFT", debugFrame.TADHeightLabel, "BOTTOMLEFT", 0, -10);
+debugFrame.TADHeightInput:SetAutoFocus(false);
+debugFrame.TADHeightInput:SetNumeric(true);
+debugFrame.TADHeightInput:SetScript("OnEnterPressed", function(self)
+    local height = tonumber(self:GetText());
+    if height then
+        print("Setting TableAttributeDisplay height to:", height)
+        LibRu.Debug.SetTableAttributeDisplayHeight(height);
+    else
+        print("Invalid height input. Please enter a valid number.");
+    end
+    self:ClearFocus();
+end);
+
+-- reload UI button
+debugFrame.ReloadUIButton = CreateFrame("Button", "RTE Debug Frame Reload UI", debugFrame, "UIPanelButtonTemplate");
+debugFrame.ReloadUIButton:SetSize(120, 25);
+debugFrame.ReloadUIButton:SetPoint("TOPLEFT", debugFrame.TADHeightInput, "BOTTOMLEFT", -10, -10);
+debugFrame.ReloadUIButton:SetText("Reload UI");
+debugFrame.ReloadUIButton:SetScript("OnClick", function()
+    ReloadUI();
+end);
+
 
 RTE.DebugPanel = debugFrame;
